@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+import RISCV_Definitions;
+
+/*
+ * Input and output ports
+ */
+port in u2 memOp, data_t addr_i, value, out u16 addr_o, sync data_t data;
+
+/**
+ * Task
+ */
+combinational void main() {
+	u2 ops = memOp.read;
+	addr_o.write(addr_i.read);
+	if (ops[MEM_WRITE]) {
+		data.write(value.read);
+	}
+}

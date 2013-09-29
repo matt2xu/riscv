@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+import RISCV_Definitions;
+
+port in data_t pc_normal, sync pc_jump, out next_pc, pc;
+
+void main() {
+	if (pc_jump.available) {
+		// if PC from jump available, use it
+		write_pc(pc_jump.read);
+	} else {
+		// otherwise just use normal PC
+		write_pc(pc_normal.read);
+	}
+}
+
+void write_pc(data_t new_pc) {
+	pc.write(new_pc);
+	next_pc.write(new_pc + 4);
+}

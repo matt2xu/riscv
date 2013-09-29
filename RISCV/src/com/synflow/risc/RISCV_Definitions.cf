@@ -1,0 +1,10 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+
+u6 XLEN = 32;
+typedef u<XLEN> data_t;
+typedef u5 reg_index;
+
+u2 MEM_READ = 0, MEM_WRITE = 1;

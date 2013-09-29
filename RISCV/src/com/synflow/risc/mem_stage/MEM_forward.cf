@@ -1,0 +1,17 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+import RISCV_Definitions;
+
+/*
+ * Input and output ports
+ */
+port in reg_index rd, out rd_o;
+
+/**
+ * Task
+ */
+void main() {
+	rd_o.write(rd.read);
+}

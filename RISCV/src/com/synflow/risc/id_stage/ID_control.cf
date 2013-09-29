@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+import RISCV_Definitions;
+
+/*
+ * Input and output ports
+ */
+port in data_t instr, out reg_index rs1, rs2, rd;
+
+/**
+ * Task
+ */
+combinational void main() {
+	data_t inst = instr.read;
+	//u7 opcode = inst & 0x7F;
+	reg_index rd_local = inst >> 27, rs1_local = inst >> 22, rs2_local = inst >> 17;
+	rs1.write(rs1_local);
+	rs2.write(rs2_local);
+	rd.write(rd_local);
+}
