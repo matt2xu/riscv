@@ -70,6 +70,7 @@ module ID_decode(input clock, input reset_n, input [31 : 0] instr, output reg [4
       flags = (flags & 9'h1fd);
     end
     imm = $signed(12'h000);
+    $display("opcode = %0h", opcode);
     if ((((opcode == local_RISCV_OP_IMM) || (opcode == local_RISCV_OP_IMM_32)) || (opcode == local_RISCV_LOAD))) begin
       imm = inst >> 4'ha;
       flags = (flags | 9'h004);
@@ -83,6 +84,7 @@ module ID_decode(input clock, input reset_n, input [31 : 0] instr, output reg [4
         flags = (flags | 9'h004);
       end
     end
+    $display("imm = %0h", imm);
     if (((((opcode == local_RISCV_STORE) || (opcode == local_RISCV_BRANCH)) || (opcode == local_RISCV_J)) || (opcode == local_RISCV_JAL))) begin
       rd = 5'h00;
     end
@@ -90,6 +92,7 @@ module ID_decode(input clock, input reset_n, input [31 : 0] instr, output reg [4
       rd = inst >> 5'h1b;
     end
     rd_o_out = rd;
+    $display("flags: %0h", flags);
     flags_o_out = flags;
     imm_o_out = imm;
     rd_o <= rd_o_out;

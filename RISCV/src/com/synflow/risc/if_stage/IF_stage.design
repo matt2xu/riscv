@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:com.synflow.core.model="http://www.synflow.com/core/2012/Model" xmlns:net.sf.orcc.df="http://orcc.sf.net/model/2011/Df" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:com.synflow.core.model="http://www.synflow.com/core/2012/Model" xmlns:net.sf.orcc.df="http://orcc.sf.net/model/2011/Df" xmlns:net.sf.orcc.ir="http://orcc.sf.net/model/2011/Ir" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
   <pi:Diagram visible="true" gridUnit="10" diagramTypeId="design" name="IF_stage" snapToGrid="true" pictogramLinks="/0/@children.0/@link /0/@children.1/@link /0/@children.2/@link /0/@connections.0/@link /0/@connections.1/@link /0/@connections.2/@link /0/@children.3/@link /0/@connections.3/@link /0/@children.4/@link /0/@connections.4/@link" version="0.10.0">
     <properties key="version" value="0.8.0"/>
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
@@ -259,6 +259,23 @@
       <attributes name="direction" stringValue="out"/>
     </vertices>
     <vertices xsi:type="com.synflow.core.model:Reference" label="rom_instr" incoming="/1/@edges.3" outgoing="/1/@edges.4" className="com.synflow.rom.ROM">
+      <arguments xsi:type="net.sf.orcc.ir:ExprInt" value="32">
+        <type xsi:type="net.sf.orcc.ir:TypeUint" size="6"/>
+      </arguments>
+      <arguments xsi:type="net.sf.orcc.ir:ExprList">
+        <value xsi:type="net.sf.orcc.ir:ExprInt" value="137013267">
+          <type xsi:type="net.sf.orcc.ir:TypeUint" size="28"/>
+        </value>
+        <value xsi:type="net.sf.orcc.ir:ExprInt" value="268478483">
+          <type xsi:type="net.sf.orcc.ir:TypeUint" size="29"/>
+        </value>
+        <value xsi:type="net.sf.orcc.ir:ExprInt" value="402663443">
+          <type xsi:type="net.sf.orcc.ir:TypeUint" size="29"/>
+        </value>
+        <value xsi:type="net.sf.orcc.ir:ExprInt" value="536876051">
+          <type xsi:type="net.sf.orcc.ir:TypeUint" size="30"/>
+        </value>
+      </arguments>
       <clocks>clock</clocks>
     </vertices>
     <vertices xsi:type="net.sf.orcc.df:Port" label="instr" incoming="/1/@edges.4">

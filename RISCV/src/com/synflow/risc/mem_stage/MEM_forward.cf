@@ -7,11 +7,13 @@ import RISCV_Definitions;
 /*
  * Input and output ports
  */
-port in reg_index rd_i, out rd_o;
+port in flags_t flags_i, out flags_o, in reg_t rd_i, out rd_o, in data_t value_i, out value_o;
 
 /**
  * Task
  */
 void main() {
+	flags_o.write(flags_i.read);
 	rd_o.write(rd_i.read);
+	value_o.write(value_i.read);
 }

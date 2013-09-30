@@ -5,7 +5,8 @@
 
 u6 XLEN = 32;
 typedef u<XLEN> data_t;
-typedef u5 reg_index;
+typedef i<XLEN> signed_data_t;
+typedef u5 reg_t;
 
 u7	RISCV_LOAD      = 0b00_000_11,
 	/* LOAD-FP */

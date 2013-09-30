@@ -1,5 +1,5 @@
 /**
- * Title      : Generated from com.synflow.risc.IF_manage_PC by Synflow Studio
+ * Title      : Generated from com.synflow.risc.if_stage.IF_manage_PC by Synflow Studio
  * Project    : RISCV
  *
  * File       : IF_manage_PC.vhd
@@ -12,7 +12,7 @@
  *
  */
 
-module IF_manage_PC(input clock, input reset_n, input [31 : 0] pc_normal, input [31 : 0] pc_jump, input pc_jump_send, output reg [31 : 0] next_pc, output reg [31 : 0] pc);
+module IF_manage_PC(input clock, input reset_n, input [31 : 0] pc_normal, input [31 : 0] pc_jump, input pc_jump_send, output reg [31 : 0] next_pc, output reg [1 : 0] pc);
 
 
   /**
@@ -27,12 +27,13 @@ module IF_manage_PC(input clock, input reset_n, input [31 : 0] pc_normal, input 
   task IF_manage_PC_0_a(input [31 : 0] pc_jump_in);
     reg [31 : 0] new_pc;
     reg [31 : 0] local_pc_jump;
-    reg [31 : 0] pc_out;
+    reg [1 : 0] pc_out;
     reg [31 : 0] next_pc_out;
   begin
     local_pc_jump = pc_jump_in;
     new_pc = local_pc_jump;
-    pc_out = new_pc;
+    $display("writing new pc: %0h", new_pc >> 2'h2);
+    pc_out = new_pc >> 2'h2;
     next_pc_out = (new_pc + 33'h000000004);
     pc <= pc_out;
     next_pc <= next_pc_out;
@@ -43,12 +44,13 @@ module IF_manage_PC(input clock, input reset_n, input [31 : 0] pc_normal, input 
   task IF_manage_PC_0_b(input [31 : 0] pc_normal_in);
     reg [31 : 0] new_pc;
     reg [31 : 0] local_pc_normal;
-    reg [31 : 0] pc_out;
+    reg [1 : 0] pc_out;
     reg [31 : 0] next_pc_out;
   begin
     local_pc_normal = pc_normal_in;
     new_pc = local_pc_normal;
-    pc_out = new_pc;
+    $display("writing new pc: %0h", new_pc >> 2'h2);
+    pc_out = new_pc >> 2'h2;
     next_pc_out = (new_pc + 33'h000000004);
     pc <= pc_out;
     next_pc <= next_pc_out;

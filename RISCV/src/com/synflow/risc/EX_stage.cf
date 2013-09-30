@@ -7,13 +7,40 @@ import RISCV_Definitions;
 /*
  * Input and output ports
  */
-port in data_t op1, op2, rd, flags_t flags, out data_t addr, value, reg_index rd_o, flags_t flags_o;
+port in data_t val1, val2, reg_t rd, flags_t flags_i, imm12_t imm, out data_t addr, value, reg_t rd_o, flags_t flags_o;
 
 /**
  * Task
  */
 void main() {
-	value.write(op1.read + op2.read);
+	flags_t flags = flags_i.read;
+	print("flags: ", flags);
+
+	data_t val1_i = val1.read, val2_i = val2.read;
+	imm12_t imm_i = imm.read;
+
+	print("val1 = ", val1_i, " & val2 = ", val2_i);
+	print("imm = ", imm_i);
+
+	signed_data_t signExtendedImm = imm_i;
+	data_t op1 = val1_i, op2 = flags[HAS_IMM] ? signExtendedImm : val2_i;
+	data_t res = op1 + op2;
+
+	data_t tmp_value = 0, tmp_addr = 0;
+	if (flags[LOAD] || flags[STORE]) {
+		tmp_addr = res;
+	}
+
+	if (flags[STORE]) {
+		tmp_value = val2_i;
+	} else {
+		tmp_value = res;
+	}
+
+	print("addr = ", tmp_addr);
+	print("value = ", tmp_value);
+	addr.write(tmp_addr);
+	value.write(tmp_value);
 	rd_o.write(rd.read);
-	flags_o.write(flags.read);
+	flags_o.write(flags);
 }

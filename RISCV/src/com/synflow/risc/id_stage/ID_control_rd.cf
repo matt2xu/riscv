@@ -7,15 +7,15 @@ import RISCV_Definitions;
 /*
  * Input and output ports
  */
-port in reg_index rd, out rd_o, in sync data_t data, out sync data_o;
+port in reg_t rd_i, out rd_o, in sync data_t data_i, out sync data_o;
 
 /**
  * Task
  */
 combinational void main() {
 	// makes sure x0 is never written (should always be zero)
-	if (data.available && rd.read != 0) {
-		rd_o.write(rd.read);
-		data_o.write(data.read);
+	if (data_i.available && rd_i.read != 0) {
+		rd_o.write(rd_i.read);
+		data_o.write(data_i.read);
 	}
 }

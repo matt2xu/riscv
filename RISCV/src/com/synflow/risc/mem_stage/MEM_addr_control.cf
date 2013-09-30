@@ -7,16 +7,16 @@ import RISCV_Definitions;
 /*
  * Input and output ports
  */
-port in flags_t flags_i, data_t addr_i, value, out u16 addr_o, sync data_t data, flags_t flags_o;
+port in flags_t flags, data_t addr_i, value, out u16 addr_o, sync data_t data;
 
 /**
  * Task
  */
 combinational void main() {
-	flags_t flags = flags_i.read;
 	addr_o.write(addr_i.read);
-	flags_o.write(flags);
-	if (flags[STORE]) {
+	flags_t flags_i = flags.read;
+	print("flags: ", flags_i);
+	if (flags_i[STORE]) {
 		data.write(value.read);
 	}
 }
