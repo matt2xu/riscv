@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:com.synflow.core.model="http://www.synflow.com/core/2012/Model" xmlns:net.sf.orcc.df="http://orcc.sf.net/model/2011/Df" xmlns:net.sf.orcc.ir="http://orcc.sf.net/model/2011/Ir" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
-  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="design" name="MEM_stage" snapToGrid="true" pictogramLinks="/0/@children.0/@link /0/@children.1/@link /0/@children.2/@link /0/@children.3/@link /0/@children.4/@link /0/@children.5/@link /0/@children.6/@link /0/@connections.0/@link /0/@connections.1/@link /0/@children.7/@link /0/@connections.2/@link /0/@connections.3/@link /0/@connections.4/@link /0/@connections.5/@link /0/@children.8/@link /0/@connections.6/@link /0/@connections.7/@link" version="0.10.0">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="design" name="MEM_stage" snapToGrid="true" pictogramLinks="/0/@children.0/@link /0/@children.1/@link /0/@children.2/@link /0/@children.3/@link /0/@children.4/@link /0/@children.5/@link /0/@children.6/@link /0/@connections.0/@link /0/@children.7/@link /0/@connections.1/@link /0/@connections.2/@link /0/@connections.3/@link /0/@connections.4/@link /0/@children.8/@link /0/@connections.5/@link /0/@children.9/@link /0/@connections.6/@link /0/@connections.7/@link /0/@connections.8/@link" version="0.10.0">
     <properties key="version" value="0.8.0"/>
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
     <link businessObjects="/1"/>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="50" height="20" x="50" y="70"/>
       <link businessObjects="/1/@vertices.0"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.3">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.2">
         <properties key="direction" value="in"/>
         <properties key="native" value="false"/>
         <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="12" height="12" y="4" style="/0/@styles.0"/>
@@ -18,35 +18,35 @@
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="34" height="20" x="68" y="150"/>
-      <link businessObjects="/1/@vertices.1"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.6">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="46" height="20" x="68" y="150"/>
+      <link businessObjects="/1/@vertices.2"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.8">
         <properties key="direction" value="in"/>
         <properties key="native" value="false"/>
         <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="12" height="12" y="4" style="/0/@styles.0"/>
-        <location x="22"/>
+        <location x="34"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="22" height="20" style="/0/@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="rd"/>
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="34" height="20" style="/0/@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="rd_i"/>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="69" height="20" x="50" y="50"/>
-      <link businessObjects="/1/@vertices.2"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.1">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="64" height="20" x="35" y="50"/>
+      <link businessObjects="/1/@vertices.3"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.7">
         <properties key="direction" value="in"/>
         <properties key="native" value="false"/>
         <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="12" height="12" y="4" style="/0/@styles.0"/>
-        <location x="57"/>
+        <location x="52"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="57" height="20" style="/0/@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="memOp"/>
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="52" height="20" style="/0/@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="flags_i"/>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:RoundedRectangle" lineStyle="UNSPECIFIED" width="100" height="60" x="350" y="30" style="/0/@styles.1" cornerHeight="5" cornerWidth="5"/>
-      <link businessObjects="/1/@vertices.3"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.2">
+      <link businessObjects="/1/@vertices.4"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.1">
         <properties key="direction" value="in"/>
         <properties key="native" value="true"/>
         <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="57" height="20">
@@ -62,7 +62,7 @@
         </graphicsAlgorithm>
         <location y="40"/>
       </anchors>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.5">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.4">
         <properties key="direction" value="out"/>
         <properties key="native" value="true"/>
         <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="13" height="20">
@@ -82,8 +82,8 @@
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="58" height="20" x="506" y="50"/>
-      <link businessObjects="/1/@vertices.5"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.5">
+      <link businessObjects="/1/@vertices.6"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.4">
         <properties key="direction" value="out"/>
         <properties key="native" value="false"/>
         <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="12" height="12" y="4" style="/0/@styles.0"/>
@@ -95,8 +95,8 @@
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="50" height="20" x="510" y="150"/>
-      <link businessObjects="/1/@vertices.4"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.7">
+      <link businessObjects="/1/@vertices.5"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.5">
         <properties key="direction" value="out"/>
         <properties key="native" value="false"/>
         <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="12" height="12" y="4" style="/0/@styles.0"/>
@@ -108,16 +108,16 @@
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:RoundedRectangle" lineStyle="UNSPECIFIED" width="141" height="80" x="170" y="30" style="/0/@styles.0" cornerHeight="5" cornerWidth="5"/>
-      <link businessObjects="/1/@vertices.6"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.1">
+      <link businessObjects="/1/@vertices.7"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.7">
         <properties key="direction" value="in"/>
         <properties key="native" value="true"/>
-        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="54" height="20">
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="49" height="20" x="5" style="/0/@styles.0/@styles.1" value="memOp"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="49" height="20">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="44" height="20" x="5" style="/0/@styles.0/@styles.1" value="flags_i"/>
         </graphicsAlgorithm>
         <location y="20"/>
       </anchors>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.2">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.1">
         <properties key="direction" value="out"/>
         <properties key="native" value="true"/>
         <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="51" height="20">
@@ -133,7 +133,7 @@
         </graphicsAlgorithm>
         <location x="107" y="40"/>
       </anchors>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.3">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.2">
         <properties key="direction" value="in"/>
         <properties key="native" value="true"/>
         <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="47" height="20">
@@ -141,13 +141,21 @@
         </graphicsAlgorithm>
         <location y="40"/>
       </anchors>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.4">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.3">
         <properties key="direction" value="in"/>
         <properties key="native" value="true"/>
         <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="41" height="20">
           <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="36" height="20" x="5" style="/0/@styles.0/@styles.1" value="value"/>
         </graphicsAlgorithm>
         <location y="60"/>
+      </anchors>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.6">
+        <properties key="direction" value="out"/>
+        <properties key="native" value="true"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="53" height="20">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="48" height="20" style="/0/@styles.0/@styles.1" value="flags_o"/>
+        </graphicsAlgorithm>
+        <location x="88" y="60"/>
       </anchors>
       <children visible="true">
         <graphicsAlgorithm xsi:type="al:Polyline" lineStyle="UNSPECIFIED" style="/0/@styles.0">
@@ -160,30 +168,30 @@
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="49" height="20" x="50" y="89"/>
-      <link businessObjects="/1/@vertices.7"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.4">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="56" height="20" x="50" y="89"/>
+      <link businessObjects="/1/@vertices.1"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.3">
         <properties key="direction" value="in"/>
         <properties key="native" value="false"/>
         <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="12" height="12" y="4" style="/0/@styles.0"/>
-        <location x="37"/>
+        <location x="44"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="37" height="20" style="/0/@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="data"/>
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="44" height="20" style="/0/@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="value"/>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:RoundedRectangle" lineStyle="UNSPECIFIED" width="121" height="60" x="260" y="130" style="/0/@styles.0" cornerHeight="5" cornerWidth="5"/>
       <link businessObjects="/1/@vertices.8"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.6">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.8">
         <properties key="direction" value="in"/>
         <properties key="native" value="true"/>
-        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="19" height="20">
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="14" height="20" x="5" style="/0/@styles.0/@styles.1" value="rd"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="31" height="20">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="26" height="20" x="5" style="/0/@styles.0/@styles.1" value="rd_i"/>
         </graphicsAlgorithm>
         <location y="20"/>
       </anchors>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.7">
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.5">
         <properties key="direction" value="out"/>
         <properties key="native" value="true"/>
         <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="20">
@@ -199,6 +207,19 @@
       </children>
       <children visible="true">
         <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="121" height="20" style="/0/@styles.0/@styles.1" horizontalAlignment="ALIGNMENT_CENTER" value="mem_forward"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="68" height="20" x="501" y="89"/>
+      <link businessObjects="/1/@vertices.9"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" incomingConnections="/0/@connections.6">
+        <properties key="direction" value="out"/>
+        <properties key="native" value="false"/>
+        <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="12" height="12" y="4" style="/0/@styles.0"/>
+        <location/>
+      </anchors>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="56" height="20" x="12" style="/0/@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="flags_o"/>
       </children>
     </children>
     <styles foreground="/0/@colors.2" lineWidth="2" id="ENTITY">
@@ -266,7 +287,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.2/@anchors.0" end="/0/@children.6/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.6/@anchors.1" end="/0/@children.3/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.5" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.1"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
@@ -277,7 +298,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.6/@anchors.1" end="/0/@children.3/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.6/@anchors.3">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.5" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.2"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
@@ -288,7 +309,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.6/@anchors.3">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.7/@anchors.0" end="/0/@children.6/@anchors.4">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.5" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.3"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
@@ -299,7 +320,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.7/@anchors.0" end="/0/@children.6/@anchors.4">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.2" end="/0/@children.4/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.5" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.4"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
@@ -310,7 +331,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.2" end="/0/@children.4/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.8/@anchors.1" end="/0/@children.5/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.5" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.5"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
@@ -321,7 +342,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.1/@anchors.0" end="/0/@children.8/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.6/@anchors.5" end="/0/@children.9/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.5" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.6"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
@@ -332,9 +353,20 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.8/@anchors.1" end="/0/@children.5/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.2/@anchors.0" end="/0/@children.6/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.5" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.7"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.5" foreground="/0/@colors.5" lineWidth="2" filled="true" transparency="0.0">
+          <points x="-10" y="5"/>
+          <points/>
+          <points x="-10" y="-5"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.1/@anchors.0" end="/0/@children.8/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.5" lineWidth="2" filled="false" transparency="0.0"/>
+      <link businessObjects="/1/@edges.8"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.5" foreground="/0/@colors.5" lineWidth="2" filled="true" transparency="0.0">
           <points x="-10" y="5"/>
@@ -352,24 +384,28 @@
     <fonts name="Verdana" size="8" bold="true"/>
   </pi:Diagram>
   <com.synflow.core.model:Design>
-    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.6" target="/1/@vertices.3" sourcePort="data" targetPort="data"/>
-    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.2" target="/1/@vertices.6" targetPort="memOp"/>
-    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.6" target="/1/@vertices.3" sourcePort="addr_o" targetPort="address"/>
-    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.0" target="/1/@vertices.6" targetPort="addr_i"/>
-    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.7" target="/1/@vertices.6" targetPort="value"/>
-    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.3" target="/1/@vertices.5" sourcePort="q"/>
-    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.1" target="/1/@vertices.8" targetPort="rd"/>
-    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.8" target="/1/@vertices.4" sourcePort="rd_o"/>
-    <vertices xsi:type="net.sf.orcc.df:Port" label="addr" outgoing="/1/@edges.3">
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.7" target="/1/@vertices.4" sourcePort="data" targetPort="data"/>
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.7" target="/1/@vertices.4" sourcePort="addr_o" targetPort="address"/>
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.0" target="/1/@vertices.7" targetPort="addr_i"/>
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.1" target="/1/@vertices.7" targetPort="value"/>
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.4" target="/1/@vertices.6" sourcePort="q"/>
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.8" target="/1/@vertices.5" sourcePort="rd_o"/>
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.7" target="/1/@vertices.9" sourcePort="flags_o"/>
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.3" target="/1/@vertices.7" targetPort="flags_i"/>
+    <edges xsi:type="com.synflow.core.model:Relation" source="/1/@vertices.2" target="/1/@vertices.8" targetPort="rd_i"/>
+    <vertices xsi:type="net.sf.orcc.df:Port" label="addr" outgoing="/1/@edges.2">
       <attributes name="direction" stringValue="in"/>
     </vertices>
-    <vertices xsi:type="net.sf.orcc.df:Port" label="rd" outgoing="/1/@edges.6">
+    <vertices xsi:type="net.sf.orcc.df:Port" label="value" outgoing="/1/@edges.3">
       <attributes name="direction" stringValue="in"/>
     </vertices>
-    <vertices xsi:type="net.sf.orcc.df:Port" label="memOp" outgoing="/1/@edges.1">
+    <vertices xsi:type="net.sf.orcc.df:Port" label="rd_i" outgoing="/1/@edges.8">
       <attributes name="direction" stringValue="in"/>
     </vertices>
-    <vertices xsi:type="com.synflow.core.model:Reference" label="ram" incoming="/1/@edges.0 /1/@edges.2" outgoing="/1/@edges.5" className="com.synflow.ram.Single_Port_RAM">
+    <vertices xsi:type="net.sf.orcc.df:Port" label="flags_i" outgoing="/1/@edges.7">
+      <attributes name="direction" stringValue="in"/>
+    </vertices>
+    <vertices xsi:type="com.synflow.core.model:Reference" label="ram" incoming="/1/@edges.0 /1/@edges.1" outgoing="/1/@edges.4" className="com.synflow.ram.Single_Port_RAM">
       <arguments xsi:type="net.sf.orcc.ir:ExprInt" value="16">
         <type xsi:type="net.sf.orcc.ir:TypeUint" size="5"/>
       </arguments>
@@ -378,22 +414,22 @@
       </arguments>
       <clocks>clock</clocks>
     </vertices>
-    <vertices xsi:type="net.sf.orcc.df:Port" label="rd_o" incoming="/1/@edges.7">
+    <vertices xsi:type="net.sf.orcc.df:Port" label="rd_o" incoming="/1/@edges.5">
       <attributes name="direction" stringValue="out"/>
     </vertices>
-    <vertices xsi:type="net.sf.orcc.df:Port" label="result" incoming="/1/@edges.5">
+    <vertices xsi:type="net.sf.orcc.df:Port" label="result" incoming="/1/@edges.4">
       <attributes name="direction" stringValue="out"/>
     </vertices>
-    <vertices xsi:type="com.synflow.core.model:Reference" label="addr_control" incoming="/1/@edges.1 /1/@edges.3 /1/@edges.4" outgoing="/1/@edges.0 /1/@edges.2">
+    <vertices xsi:type="com.synflow.core.model:Reference" label="addr_control" incoming="/1/@edges.2 /1/@edges.3 /1/@edges.7" outgoing="/1/@edges.0 /1/@edges.1 /1/@edges.6">
       <clocks>clock</clocks>
       <source href="MEM_addr_control.cf#/"/>
     </vertices>
-    <vertices xsi:type="net.sf.orcc.df:Port" label="data" outgoing="/1/@edges.4">
-      <attributes name="direction" stringValue="in"/>
-    </vertices>
-    <vertices xsi:type="com.synflow.core.model:Reference" label="mem_forward" incoming="/1/@edges.6" outgoing="/1/@edges.7">
+    <vertices xsi:type="com.synflow.core.model:Reference" label="mem_forward" incoming="/1/@edges.8" outgoing="/1/@edges.5">
       <clocks>clock</clocks>
       <source href="MEM_forward.cf#/"/>
+    </vertices>
+    <vertices xsi:type="net.sf.orcc.df:Port" label="flags_o" incoming="/1/@edges.6">
+      <attributes name="direction" stringValue="out"/>
     </vertices>
     <clocks>clock</clocks>
   </com.synflow.core.model:Design>

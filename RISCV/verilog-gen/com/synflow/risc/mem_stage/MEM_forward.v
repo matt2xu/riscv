@@ -12,7 +12,7 @@
  *
  */
 
-module MEM_forward(input clock, input reset_n, input [4 : 0] rd, output reg [4 : 0] rd_o);
+module MEM_forward(input clock, input reset_n, input [4 : 0] rd_i, output reg [4 : 0] rd_o);
 
 
   /**
@@ -24,12 +24,12 @@ module MEM_forward(input clock, input reset_n, input [4 : 0] rd, output reg [4 :
    * Behavior
    */
   // Task MEM_forward_0 (line 16)
-  task MEM_forward_0(input [4 : 0] rd_in);
-    reg [4 : 0] local_rd;
+  task MEM_forward_0(input [4 : 0] rd_i_in);
+    reg [4 : 0] local_rd_i;
     reg [4 : 0] rd_o_out;
   begin
-    local_rd = rd_in;
-    rd_o_out = local_rd;
+    local_rd_i = rd_i_in;
+    rd_o_out = local_rd_i;
     rd_o <= rd_o_out;
   end
   endtask
@@ -45,7 +45,7 @@ module MEM_forward(input clock, input reset_n, input [4 : 0] rd, output reg [4 :
       //
       if (1) begin
         // Body of MEM_forward_0 (line 16)
-        MEM_forward_0(rd);
+        MEM_forward_0(rd_i);
       end
     end
   end

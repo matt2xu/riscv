@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+import RISCV_Definitions;
+
+/*
+ * Input and output ports
+ */
+port in reg_index rd, out rd_o, in sync data_t data, out sync data_o;
+
+/**
+ * Task
+ */
+combinational void main() {
+	// makes sure x0 is never written (should always be zero)
+	if (data.available && rd.read != 0) {
+		rd_o.write(rd.read);
+		data_o.write(data.read);
+	}
+}

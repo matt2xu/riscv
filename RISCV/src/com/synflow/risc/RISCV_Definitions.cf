@@ -7,4 +7,34 @@ u6 XLEN = 32;
 typedef u<XLEN> data_t;
 typedef u5 reg_index;
 
-u2 MEM_READ = 0, MEM_WRITE = 1;
+u7	RISCV_LOAD      = 0b00_000_11,
+	/* LOAD-FP */
+	/* custom-0 */
+	/* custom-1 */
+	RISCV_OP_IMM    = 0b00_100_11,
+	/* AUIPC */
+	RISCV_OP_IMM_32 = 0b00_110_11,
+	
+	RISCV_STORE     = 0b01_000_11,
+	/* STORE-FP */
+	/* AMO */
+	/* MISC-MEM */
+	RISCV_OP        = 0b01_100_11,
+	RISCV_LUI       = 0b01_101_11,
+	RISCV_OP_32     = 0b01_110_11,
+	
+	RISCV_BRANCH    = 0b11_000_11,
+	RISCV_JALR      = 0b11_001_11,
+	RISCV_J         = 0b11_010_11,
+	RISCV_JAL       = 0b11_011_11
+;
+
+typedef i12 imm12_t;
+
+/** flags set by ID indicating what to do in later stages */
+typedef u9 flags_t;
+
+u2 LOAD = 0, STORE = 1, HAS_IMM = 2;
+
+/** function to be performed by ALU */
+typedef u6 func_t;

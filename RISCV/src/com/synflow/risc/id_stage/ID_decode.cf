@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+import RISCV_Definitions;
+
+/*
+ * Input and output ports
+ */
+port in data_t instr, out reg_index rd_o, flags_t flags_o, func_t func_o, imm12_t imm_o;
+
+/**
+ * Task
+ */
+void main() {
+	data_t inst = instr.read;
+	u7 opcode = inst;
+
+	flags_t flags = 0;
+	flags[LOAD] = opcode == RISCV_LOAD;
+	flags[STORE] = opcode == RISCV_STORE;
+
+	imm12_t imm = 0;
+	if (opcode == RISCV_OP_IMM || opcode == RISCV_OP_IMM_32 || opcode == RISCV_LOAD) {
+		imm = inst >> 10;
+		flags[HAS_IMM] = true;
+	} else if (opcode == RISCV_STORE) {
+		imm = (inst >> 20) | ((inst >> 10) & 0x7F);
+		flags[HAS_IMM] = true;
+	}
+
+	// most instructions have a destination register
+	// except those
+	reg_index rd;
+	if (opcode == RISCV_STORE || opcode == RISCV_BRANCH ||
+		opcode == RISCV_J || opcode == RISCV_JAL) {
+		rd = 0;
+	} else {
+		rd = inst >> 27;
+	}
+
+	rd_o.write(rd);
+	flags_o.write(flags);
+	imm_o.write(imm);
+}

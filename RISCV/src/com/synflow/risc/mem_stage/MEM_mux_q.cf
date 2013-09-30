@@ -14,7 +14,7 @@ port in u2 memOp, data_t value, out data;
  */
 combinational void main() {
 	u2 ops = memOp.read;
-	if (ops[MEM_READ]) {
+	if (ops[LOAD]) {
 		data.write(value.read);
 	}
 }

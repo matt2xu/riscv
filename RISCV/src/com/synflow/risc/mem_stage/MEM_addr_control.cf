@@ -7,15 +7,16 @@ import RISCV_Definitions;
 /*
  * Input and output ports
  */
-port in u2 memOp, data_t addr_i, value, out u16 addr_o, sync data_t data;
+port in flags_t flags_i, data_t addr_i, value, out u16 addr_o, sync data_t data, flags_t flags_o;
 
 /**
  * Task
  */
 combinational void main() {
-	u2 ops = memOp.read;
+	flags_t flags = flags_i.read;
 	addr_o.write(addr_i.read);
-	if (ops[MEM_WRITE]) {
+	flags_o.write(flags);
+	if (flags[STORE]) {
 		data.write(value.read);
 	}
 }

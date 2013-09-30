@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+import RISCV_Definitions;
+
+/*
+ * Input and output ports
+ */
+port in data_t instr, out reg_index rs1, rs2;
+
+/**
+ * Task
+ */
+combinational void main() {
+	data_t inst = instr.read;
+	rs1.write(inst >> 22);
+	rs2.write(inst >> 17);
+}
