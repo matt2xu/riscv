@@ -1,0 +1,43 @@
+/*
+ * Copyright (c) 2013 Matthieu
+ * All rights reserved.
+ */
+import RISCV_Definitions;
+
+/*
+ * Input and output ports
+ */
+port in u8 unused;
+
+u32 lw(reg_t rd, reg_t rs1, imm12_t imm12) {
+	return rd << 27 | rs1 << 22 | imm12 << 10 | 0b010 << 7 | RISCV_LOAD;
+}
+
+void add(reg_t rd, reg_t rs1, reg_t rs2) {
+	print("add ", rd, " ", rs1, " ", rs2);
+	print(rd << 27 | rs1 << 22 | rs2 << 17 | RISCV_OP);
+}
+
+void addi(reg_t rd, reg_t rs1, imm12_t imm) {
+	print("addi ", rd, " ", rs1, " ", imm);
+	print(rd << 27 | rs1 << 22 | imm << 10 | RISCV_OP_IMM);
+}
+
+void nop() {
+	addi(0, 0, 0);
+}
+
+/**
+ * Task
+ */
+void init() {
+	addi(1, 0, 5);
+	addi(2, 0, 8);
+	nop();
+	nop();
+	nop();
+	add(3, 1, 2);
+}
+
+void main() {
+}

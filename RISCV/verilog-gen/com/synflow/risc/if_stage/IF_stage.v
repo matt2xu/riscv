@@ -19,7 +19,9 @@ module IF_stage(input clock, input reset_n, input [31 : 0] pc_jump, input pc_jum
    */
   // Module : manage_PC
   wire [31 : 0] manage_PC_next_pc;
-  wire [1 : 0] manage_PC_pc;
+  wire [31 : 0] manage_PC_pc;
+  // Module : divby4
+  wire [2 : 0] divby4_addr;
 
   /**
    * Instances
@@ -35,15 +37,20 @@ module IF_stage(input clock, input reset_n, input [31 : 0] pc_jump, input pc_jum
   );
   
   ROM #(
-    .depth(2),
+    .depth(3),
     .width(32),
     .fileName("../verilog-gen/com/synflow/risc/if_stage/IF_stage_rom_instr.hex")
   )
   rom_instr (
     .clock(clock),
     .reset_n(reset_n),
-    .address(manage_PC_pc),
+    .address(divby4_addr),
     .q(instr)
+  );
+  
+  DivBy4 divby4 (
+    .pc(manage_PC_pc),
+    .addr(divby4_addr)
   );
 
   /**

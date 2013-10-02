@@ -26,7 +26,7 @@ module WB_stage(input [4 : 0] rd_i, input [8 : 0] flags, input [31 : 0] fromMem,
   // Task WB_stage_0 (line 16)
   task WB_stage_0(input [4 : 0] rd_i_in, input [8 : 0] flags_in, input [31 : 0] fromMem_in, input [31 : 0] fromEx_in);
     reg [4 : 0] local_rd_i;
-    reg [8 : 0] flags_i;
+    reg [8 : 0] flags_l;
     reg [8 : 0] local_flags;
     reg [31 : 0] tmp_if;
     reg [31 : 0] local_fromMem;
@@ -38,8 +38,8 @@ module WB_stage(input [4 : 0] rd_i, input [8 : 0] flags, input [31 : 0] fromMem,
     local_rd_i = rd_i_in;
     rd_o_out = local_rd_i;
     local_flags = flags_in;
-    flags_i = local_flags;
-    _expr = (flags_i & 9'h001);
+    flags_l = local_flags;
+    _expr = (flags_l & 9'h001);
     if ((_expr != 9'h000)) begin
       local_fromMem = fromMem_in;
       tmp_if = local_fromMem;

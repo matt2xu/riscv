@@ -83,7 +83,7 @@ final public class WB_stage implements Entity {
 		if (isSchedulable) {
 			// action WB_stage_0 (line 16)
 			int local_rd_i = 0;
-			int flags_i = 0;
+			int flags_l = 0;
 			int local_flags = 0;
 			int tmp_if = 0;
 			int local_fromMem = 0;
@@ -95,8 +95,8 @@ final public class WB_stage implements Entity {
 			local_rd_i = rd_i_in; // (line 16)
 			rd_o_out = local_rd_i; // (line 16)
 			local_flags = flags_in; // (line 17)
-			flags_i = local_flags; // (line 0)
-			if ((flags_i & 0x1) != 0x0) {
+			flags_l = local_flags; // (line 0)
+			if ((flags_l & 0x1) != 0x0) {
 				local_fromMem = fromMem_in; // (line 18)
 				tmp_if = local_fromMem; // (line 0)
 			} else {

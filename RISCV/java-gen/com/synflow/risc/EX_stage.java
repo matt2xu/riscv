@@ -96,21 +96,21 @@ final public class EX_stage implements Entity {
 		}
 		if (isSchedulable) {
 			// action EX_stage_0 (line 16)
-			int flags = 0;
+			int flags_l = 0;
 			int local_flags_i = 0;
-			int val1_i = 0;
+			int val1_i_l = 0;
 			int local_val1 = 0;
-			int val2_i = 0;
+			int val2_i_l = 0;
 			int local_val2 = 0;
-			int imm_i = 0;
+			int imm_i_l = 0;
 			int local_imm = 0;
-			int signExtendedImm = 0;
-			int op1 = 0;
-			int op2 = 0;
+			int signExtendedImm_l = 0;
+			int op1_l = 0;
+			int op2_l = 0;
 			int tmp_if = 0;
-			int res = 0;
-			int tmp_value = 0;
-			int tmp_addr = 0;
+			int res_l = 0;
+			int value_l = 0;
+			int addr_l = 0;
 			int local_rd = 0;
 			flags_i_in = flags_i.readInt(); // (line 16)
 			val1_in = val1.readInt(); // (line 16)
@@ -118,42 +118,42 @@ final public class EX_stage implements Entity {
 			imm_in = imm.readInt(); // (line 16)
 			rd_in = rd.readInt(); // (line 16)
 			local_flags_i = flags_i_in; // (line 16)
-			flags = local_flags_i; // (line 0)
-			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags)); // (line 17)
+			flags_l = local_flags_i; // (line 0)
+			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_l)); // (line 17)
 			local_val1 = val1_in; // (line 19)
-			val1_i = local_val1; // (line 0)
+			val1_i_l = local_val1; // (line 0)
 			local_val2 = val2_in; // (line 19)
-			val2_i = local_val2; // (line 0)
+			val2_i_l = local_val2; // (line 0)
 			local_imm = imm_in; // (line 20)
-			imm_i = local_imm; // (line 0)
-			System.out.println(this + ": " + "val1 = " + "0x" + Integer.toHexString(val1_i) + " & val2 = " + "0x" + Integer.toHexString(val2_i)); // (line 22)
-			System.out.println(this + ": " + "imm = " + "0x" + Integer.toHexString(imm_i)); // (line 23)
-			signExtendedImm = (imm_i); // (line 0)
-			op1 = val1_i; // (line 0)
-			if ((flags & 0x4) != 0x0) {
-				tmp_if = signExtendedImm; // (line 0)
+			imm_i_l = local_imm; // (line 0)
+			System.out.println(this + ": " + "val1 = " + "0x" + Integer.toHexString(val1_i_l) + " & val2 = " + "0x" + Integer.toHexString(val2_i_l)); // (line 22)
+			System.out.println(this + ": " + "imm = " + "0x" + Integer.toHexString(imm_i_l)); // (line 23)
+			signExtendedImm_l = (imm_i_l); // (line 0)
+			op1_l = val1_i_l; // (line 0)
+			if ((flags_l & 0x4) != 0x0) {
+				tmp_if = signExtendedImm_l; // (line 0)
 			} else {
-				tmp_if = ((val2_i ^ 0x80000000) - 0x80000000); // (line 0)
+				tmp_if = ((val2_i_l ^ 0x80000000) - 0x80000000); // (line 0)
 			}
-			op2 = tmp_if; // (line 0)
-			res = ((int) ((((long) (op1)) & 0xffffffffL) + (((long) (op2)) & 0xffffffffL)) & 0xffffffff); // (line 0)
-			tmp_value = 0x0; // (line 0)
-			tmp_addr = 0x0; // (line 0)
-			if ((flags & 0x1) != 0x0 || (flags & 0x2) != 0x0) {
-				tmp_addr = res; // (line 0)
+			op2_l = tmp_if; // (line 0)
+			res_l = ((int) ((((long) (op1_l)) & 0xffffffffL) + (((long) (op2_l)) & 0xffffffffL)) & 0xffffffff); // (line 0)
+			value_l = 0x0; // (line 0)
+			addr_l = 0x0; // (line 0)
+			if ((flags_l & 0x1) != 0x0 || (flags_l & 0x2) != 0x0) {
+				addr_l = res_l; // (line 0)
 			}
-			if ((flags & 0x2) != 0x0) {
-				tmp_value = val2_i; // (line 0)
+			if ((flags_l & 0x2) != 0x0) {
+				value_l = val2_i_l; // (line 0)
 			} else {
-				tmp_value = res; // (line 0)
+				value_l = res_l; // (line 0)
 			}
-			System.out.println(this + ": " + "addr = " + "0x" + Integer.toHexString(tmp_addr)); // (line 40)
-			System.out.println(this + ": " + "value = " + "0x" + Integer.toHexString(tmp_value)); // (line 41)
-			addr_out = tmp_addr; // (line 42)
-			value_out = tmp_value; // (line 43)
+			System.out.println(this + ": " + "addr = " + "0x" + Integer.toHexString(addr_l)); // (line 40)
+			System.out.println(this + ": " + "value = " + "0x" + Integer.toHexString(value_l)); // (line 41)
+			addr_out = addr_l; // (line 42)
+			value_out = value_l; // (line 43)
 			local_rd = rd_in; // (line 44)
 			rd_o_out = local_rd; // (line 44)
-			flags_o_out = flags; // (line 45)
+			flags_o_out = flags_l; // (line 45)
 			addr.write(addr_out);
 			value.write(value_out);
 			rd_o.write(rd_o_out);

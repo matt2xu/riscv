@@ -4,7 +4,7 @@
  */
 import RISCV_Definitions;
 
-port in data_t pc_normal, sync pc_jump, out next_pc, u2 pc;
+port in data_t pc_normal, sync pc_jump, out next_pc, pc;
 
 void main() {
 	if (pc_jump.available) {
@@ -17,7 +17,7 @@ void main() {
 }
 
 void write_pc(data_t new_pc) {
-	print("writing new pc: ", new_pc / 4);
-	pc.write(new_pc / 4);
+	print("writing new pc: ", new_pc);
+	pc.write(new_pc);
 	next_pc.write(new_pc + 4);
 }

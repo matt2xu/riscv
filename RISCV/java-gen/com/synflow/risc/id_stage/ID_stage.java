@@ -94,7 +94,7 @@ final public class ID_stage implements Entity {
 
 	@Override
 	public Port[] getOutputs() {
-		return new Port[] { regFile.getOp1(), regFile.getOp2(), decode.getRd_o(), decode.getFlags_o(), decode.getFunc_o(), decode.getImm_o() };
+		return new Port[] { regFile.getOp1(), regFile.getOp2(), decode.getRd(), decode.getFlags(), decode.getFunc(), decode.getImm() };
 	}
 
 	public Port getVal1() {
@@ -104,16 +104,16 @@ final public class ID_stage implements Entity {
 		return regFile.getOp2();
 	}
 	public Port getRd() {
-		return decode.getRd_o();
+		return decode.getRd();
 	}
 	public Port getFlags() {
-		return decode.getFlags_o();
+		return decode.getFlags();
 	}
 	public Port getFunc() {
-		return decode.getFunc_o();
+		return decode.getFunc();
 	}
 	public Port getImm() {
-		return decode.getImm_o();
+		return decode.getImm();
 	}
 
 	@Override

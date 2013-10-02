@@ -28,15 +28,15 @@ module MEM_addr_control(input [8 : 0] flags, input [31 : 0] addr_i, input [31 : 
   // Scheduler of MEM_addr_control_0_a (line 19)
   function isSchedulable_MEM_addr_control_0_a(input [31 : 0] addr_i_in, input [8 : 0] flags_in);
   reg [31 : 0] local_addr_i;
-  reg [8 : 0] flags_i;
+  reg [8 : 0] flags_l;
   reg [8 : 0] local_flags;
   reg [8 : 0] _expr;
   begin
     local_addr_i = addr_i_in;
     local_flags = flags_in;
-    flags_i = local_flags;
-    $display("flags: %0h", flags_i);
-    _expr = (flags_i & 9'h002);
+    flags_l = local_flags;
+    $display("flags: %0h", flags_l);
+    _expr = (flags_l & 9'h002);
     isSchedulable_MEM_addr_control_0_a = (_expr != 9'h000);
   end
   endfunction
@@ -44,7 +44,7 @@ module MEM_addr_control(input [8 : 0] flags, input [31 : 0] addr_i, input [31 : 
   // Task MEM_addr_control_0_a (line 19)
   task MEM_addr_control_0_a(input [31 : 0] addr_i_in, input [8 : 0] flags_in, input [31 : 0] value_in);
     reg [31 : 0] local_addr_i;
-    reg [8 : 0] flags_i;
+    reg [8 : 0] flags_l;
     reg [8 : 0] local_flags;
     reg [31 : 0] local_value;
     reg [15 : 0] addr_o_out;
@@ -53,8 +53,8 @@ module MEM_addr_control(input [8 : 0] flags, input [31 : 0] addr_i, input [31 : 
     local_addr_i = addr_i_in;
     addr_o_out = local_addr_i;
     local_flags = flags_in;
-    flags_i = local_flags;
-    $display("flags: %0h", flags_i);
+    flags_l = local_flags;
+    $display("flags: %0h", flags_l);
     local_value = value_in;
     data_out = local_value;
     addr_o <= addr_o_out;
@@ -66,13 +66,13 @@ module MEM_addr_control(input [8 : 0] flags, input [31 : 0] addr_i, input [31 : 
   // Scheduler of MEM_addr_control_0_b (line 0)
   function isSchedulable_MEM_addr_control_0_b(input [31 : 0] addr_i_in, input [8 : 0] flags_in);
   reg [31 : 0] local_addr_i;
-  reg [8 : 0] flags_i;
+  reg [8 : 0] flags_l;
   reg [8 : 0] local_flags;
   begin
     local_addr_i = addr_i_in;
     local_flags = flags_in;
-    flags_i = local_flags;
-    $display("flags: %0h", flags_i);
+    flags_l = local_flags;
+    $display("flags: %0h", flags_l);
     isSchedulable_MEM_addr_control_0_b = 1;
   end
   endfunction
@@ -80,15 +80,15 @@ module MEM_addr_control(input [8 : 0] flags, input [31 : 0] addr_i, input [31 : 
   // Task MEM_addr_control_0_b (line 0)
   task MEM_addr_control_0_b(input [31 : 0] addr_i_in, input [8 : 0] flags_in);
     reg [31 : 0] local_addr_i;
-    reg [8 : 0] flags_i;
+    reg [8 : 0] flags_l;
     reg [8 : 0] local_flags;
     reg [15 : 0] addr_o_out;
   begin
     local_addr_i = addr_i_in;
     addr_o_out = local_addr_i;
     local_flags = flags_in;
-    flags_i = local_flags;
-    $display("flags: %0h", flags_i);
+    flags_l = local_flags;
+    $display("flags: %0h", flags_l);
     addr_o <= addr_o_out;
   end
   endtask

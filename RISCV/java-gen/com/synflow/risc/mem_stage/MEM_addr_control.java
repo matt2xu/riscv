@@ -75,21 +75,21 @@ final public class MEM_addr_control implements Entity {
 	
 		if (addr_i.available() && flags.available() && value.available()) {
 			int local_addr_i = 0;
-			int flags_i = 0;
+			int flags_l = 0;
 			int local_flags = 0;
 			addr_i_in = addr_i.peekInt(); // (line 19)
 			flags_in = flags.peekInt(); // (line 19)
 			value_in = value.peekInt(); // (line 19)
 			local_addr_i = addr_i_in; // (line 16)
 			local_flags = flags_in; // (line 17)
-			flags_i = local_flags; // (line 0)
-			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_i)); // (line 18)
-			isSchedulable = (flags_i & 0x2) != 0x0;
+			flags_l = local_flags; // (line 0)
+			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_l)); // (line 18)
+			isSchedulable = (flags_l & 0x2) != 0x0;
 		}
 		if (isSchedulable) {
 			// action MEM_addr_control_0_a (line 19)
 			int local_addr_i = 0;
-			int flags_i = 0;
+			int flags_l = 0;
 			int local_flags = 0;
 			int local_value = 0;
 			addr_i_in = addr_i.readInt(); // (line 19)
@@ -98,8 +98,8 @@ final public class MEM_addr_control implements Entity {
 			local_addr_i = addr_i_in; // (line 16)
 			addr_o_out = ((local_addr_i) & 0xffff); // (line 16)
 			local_flags = flags_in; // (line 17)
-			flags_i = local_flags; // (line 0)
-			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_i)); // (line 18)
+			flags_l = local_flags; // (line 0)
+			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_l)); // (line 18)
 			local_value = value_in; // (line 20)
 			data_out = local_value; // (line 20)
 			addr_o.write(addr_o_out);
@@ -109,28 +109,28 @@ final public class MEM_addr_control implements Entity {
 		}
 		if (addr_i.available() && flags.available()) {
 			int local_addr_i = 0;
-			int flags_i = 0;
+			int flags_l = 0;
 			int local_flags = 0;
 			addr_i_in = addr_i.peekInt(); // (line 0)
 			flags_in = flags.peekInt(); // (line 0)
 			local_addr_i = addr_i_in; // (line 16)
 			local_flags = flags_in; // (line 17)
-			flags_i = local_flags; // (line 0)
-			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_i)); // (line 18)
+			flags_l = local_flags; // (line 0)
+			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_l)); // (line 18)
 			isSchedulable = true;
 		}
 		if (isSchedulable) {
 			// action MEM_addr_control_0_b (line 0)
 			int local_addr_i = 0;
-			int flags_i = 0;
+			int flags_l = 0;
 			int local_flags = 0;
 			addr_i_in = addr_i.readInt(); // (line 0)
 			flags_in = flags.readInt(); // (line 0)
 			local_addr_i = addr_i_in; // (line 16)
 			addr_o_out = ((local_addr_i) & 0xffff); // (line 16)
 			local_flags = flags_in; // (line 17)
-			flags_i = local_flags; // (line 0)
-			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_i)); // (line 18)
+			flags_l = local_flags; // (line 0)
+			System.out.println(this + ": " + "flags: " + "0x" + Integer.toHexString(flags_l)); // (line 18)
 			addr_o.write(addr_o_out);
 		
 			return;

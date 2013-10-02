@@ -64,13 +64,13 @@ final public class ID_decode_rs implements Entity {
 		}
 		if (isSchedulable) {
 			// action ID_decode_rs_0 (line 16)
-			int inst = 0;
+			int inst_l = 0;
 			int local_instr = 0;
 			instr_in = instr.readInt(); // (line 16)
 			local_instr = instr_in; // (line 16)
-			inst = local_instr; // (line 0)
-			rs1_out = (((inst >>> 0x16) & 0x1f)); // (line 17)
-			rs2_out = (((inst >>> 0x11) & 0x1f)); // (line 18)
+			inst_l = local_instr; // (line 0)
+			rs1_out = (((inst_l >>> 0x16) & 0x1f)); // (line 17)
+			rs2_out = (((inst_l >>> 0x11) & 0x1f)); // (line 18)
 			rs1.write(rs1_out);
 			rs2.write(rs2_out);
 		

@@ -26,21 +26,21 @@ void main() {
 	data_t op1 = val1_i, op2 = flags[HAS_IMM] ? signExtendedImm : val2_i;
 	data_t res = op1 + op2;
 
-	data_t tmp_value = 0, tmp_addr = 0;
+	data_t value = 0, addr = 0;
 	if (flags[LOAD] || flags[STORE]) {
-		tmp_addr = res;
+		addr = res;
 	}
 
 	if (flags[STORE]) {
-		tmp_value = val2_i;
+		value = val2_i;
 	} else {
-		tmp_value = res;
+		value = res;
 	}
 
-	print("addr = ", tmp_addr);
-	print("value = ", tmp_value);
-	addr.write(tmp_addr);
-	value.write(tmp_value);
+	print("addr = ", addr);
+	print("value = ", value);
+	addr.write(addr);
+	value.write(value);
 	rd_o.write(rd.read);
 	flags_o.write(flags);
 }

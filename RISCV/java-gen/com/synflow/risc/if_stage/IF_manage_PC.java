@@ -35,7 +35,7 @@ final public class IF_manage_PC implements Entity {
 		pc_normal = new Port(this, "pc_normal", 32, _flags);
 		pc_jump = new Port(this, "pc_jump", 32, Port.SYNC | _flags);
 		next_pc = new Port(this, "next_pc", 32, _flags);
-		pc = new Port(this, "pc", 2, _flags);
+		pc = new Port(this, "pc", 32, _flags);
 	}
 
 
@@ -74,8 +74,8 @@ final public class IF_manage_PC implements Entity {
 			pc_jump_in = pc_jump.readInt(); // (line 10)
 			local_pc_jump = pc_jump_in; // (line 12)
 			new_pc = local_pc_jump; // (line 0)
-			System.out.println(this + ": " + "writing new pc: " + "0x" + Integer.toHexString((((new_pc >>> 0x2) & 0x3fffffff)))); // (line 20)
-			pc_out = (((new_pc >>> 0x2) & 0x3)); // (line 21)
+			System.out.println(this + ": " + "writing new pc: " + "0x" + Integer.toHexString(new_pc)); // (line 20)
+			pc_out = new_pc; // (line 21)
 			next_pc_out = ((int) ((((long) (new_pc)) & 0xffffffffL) + 0x4L) & 0xffffffff); // (line 22)
 			pc.write(pc_out);
 			next_pc.write(next_pc_out);
@@ -93,8 +93,8 @@ final public class IF_manage_PC implements Entity {
 			pc_normal_in = pc_normal.readInt(); // (line 0)
 			local_pc_normal = pc_normal_in; // (line 15)
 			new_pc = local_pc_normal; // (line 0)
-			System.out.println(this + ": " + "writing new pc: " + "0x" + Integer.toHexString((((new_pc >>> 0x2) & 0x3fffffff)))); // (line 20)
-			pc_out = (((new_pc >>> 0x2) & 0x3)); // (line 21)
+			System.out.println(this + ": " + "writing new pc: " + "0x" + Integer.toHexString(new_pc)); // (line 20)
+			pc_out = new_pc; // (line 21)
 			next_pc_out = ((int) ((((long) (new_pc)) & 0xffffffffL) + 0x4L) & 0xffffffff); // (line 22)
 			pc.write(pc_out);
 			next_pc.write(next_pc_out);

@@ -7,14 +7,11 @@ import RISCV_Definitions;
 /*
  * Input and output ports
  */
-port in u2 memOp, data_t value, out data;
+port in data_t pc, out u3 addr;
 
 /**
  * Task
  */
 combinational void main() {
-	u2 ops = memOp.read;
-	if (ops[LOAD]) {
-		data.write(value.read);
-	}
+	addr.write(pc.read / 4);
 }

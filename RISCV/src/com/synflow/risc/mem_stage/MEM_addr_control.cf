@@ -14,9 +14,9 @@ port in flags_t flags, data_t addr_i, value, out u16 addr_o, sync data_t data;
  */
 combinational void main() {
 	addr_o.write(addr_i.read);
-	flags_t flags_i = flags.read;
-	print("flags: ", flags_i);
-	if (flags_i[STORE]) {
+	flags_t flags = flags.read;
+	print("flags: ", flags);
+	if (flags[STORE]) {
 		data.write(value.read);
 	}
 }

@@ -7,6 +7,7 @@ import com.synflow.runtime.Entity;
 import com.synflow.runtime.Port;
 import com.synflow.runtime.Runner;
 import com.synflow.risc.if_stage.IF_manage_PC;
+import com.synflow.risc.test.DivBy4;
 import com.synflow.rom.ROM;
 
 @SuppressWarnings("all")
@@ -22,6 +23,7 @@ final public class IF_stage implements Entity {
 	private Port pc_jump;
 
 	private final IF_manage_PC manage_PC;
+	private final DivBy4 divby4;
 	private final ROM rom_instr;
 
 	/**
@@ -35,7 +37,8 @@ final public class IF_stage implements Entity {
 
 		// create instances
 		manage_PC = new IF_manage_PC("manage_PC", _flags);
-		rom_instr = new ROM("rom_instr", _flags, 0x20, new int[] {0x82aa813, 0x1000a813, 0x18002813, 0x20001413});
+		divby4 = new DivBy4("divby4", _flags);
+		rom_instr = new ROM("rom_instr", _flags, 0x20, new int[] {0x8001413, 0x10002013, 0x13, 0x13, 0x13, 0x18440033});
 	}
 
 	@Override
@@ -43,6 +46,8 @@ final public class IF_stage implements Entity {
 		manage_PC.commit();
 		rom_instr.commit();
 		
+		divby4.execute();
+		divby4.commit();
 	}
 
 	@Override
@@ -50,7 +55,8 @@ final public class IF_stage implements Entity {
 		this.pc_jump = ports[0];
 
 		manage_PC.connect(manage_PC.getNext_pc(), pc_jump);
-		rom_instr.connect(manage_PC.getPc());
+		divby4.connect(manage_PC.getPc());
+		rom_instr.connect(divby4.getAddr());
 	}
 
 	@Override
@@ -61,7 +67,7 @@ final public class IF_stage implements Entity {
 
 	@Override
 	public Entity[] getChildren() {
-		return new Entity[] { manage_PC, rom_instr };
+		return new Entity[] { manage_PC, divby4, rom_instr };
 	}
 
 	@Override

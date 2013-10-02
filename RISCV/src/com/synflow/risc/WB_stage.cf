@@ -14,6 +14,6 @@ port in reg_t rd_i, out rd_o, in flags_t flags, in data_t fromMem, fromEx, out v
  */
 combinational void main() {
 	rd_o.write(rd_i.read);
-	flags_t flags_i = flags.read;
-	value_o.write(flags_i[LOAD] ? fromMem.read : fromEx.read);
+	flags_t flags = flags.read;
+	value_o.write(flags[LOAD] ? fromMem.read : fromEx.read);
 }

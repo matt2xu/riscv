@@ -50,10 +50,10 @@ module ID_stage(input clock, input reset_n, input [31 : 0] instr, input [4 : 0] 
     .clock(clock),
     .reset_n(reset_n),
     .instr(instr),
-    .rd_o(rd),
-    .flags_o(flags),
-    .func_o(func),
-    .imm_o(imm)
+    .rd(rd),
+    .flags(flags),
+    .func(func),
+    .imm(imm)
   );
   
   ID_control_rd control_rd (

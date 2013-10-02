@@ -7,14 +7,14 @@ import RISCV_Definitions;
 /*
  * Input and output ports
  */
-port in data_t instr, out reg_t rd_o, flags_t flags_o, func_t func_o, imm12_t imm_o;
+port in data_t instr, out reg_t rd, flags_t flags, func_t func, imm12_t imm;
 
 /**
  * Task
  */
 void main() {
-	data_t inst = instr.read;
-	u7 opcode = inst;
+	data_t instr = instr.read;
+	u7 opcode = instr;
 
 	flags_t flags = 0;
 	flags[LOAD] = opcode == RISCV_LOAD;
@@ -23,10 +23,10 @@ void main() {
 	imm12_t imm = 0;
 	print("opcode = ", opcode);
 	if (opcode == RISCV_OP_IMM || opcode == RISCV_OP_IMM_32 || opcode == RISCV_LOAD) {
-		imm = inst >> 10;
+		imm = instr >> 10;
 		flags[HAS_IMM] = true;
 	} else if (opcode == RISCV_STORE) {
-		imm = (inst >> 20) | ((inst >> 10) & 0x7F);
+		imm = (instr >> 20) | ((instr >> 10) & 0x7F);
 		flags[HAS_IMM] = true;
 	}
 	print("imm = ", imm);
@@ -38,11 +38,11 @@ void main() {
 		opcode == RISCV_J || opcode == RISCV_JAL) {
 		rd = 0;
 	} else {
-		rd = inst >> 27;
+		rd = instr >> 27;
 	}
 
-	rd_o.write(rd);
+	rd.write(rd);
 	print("flags: ", flags);
-	flags_o.write(flags);
-	imm_o.write(imm);
+	flags.write(flags);
+	imm.write(imm);
 }
