@@ -315,13 +315,21 @@
         </graphicsAlgorithm>
         <location y="80"/>
       </anchors>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.16">
+        <properties key="direction" value="out"/>
+        <properties key="native" value="false"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="53" height="20">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="48" height="20" style="/0/@styles.0/@styles.0" value="flags_o"/>
+        </graphicsAlgorithm>
+        <location x="88" y="40"/>
+      </anchors>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.14">
         <properties key="direction" value="out"/>
         <properties key="native" value="false"/>
         <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="66" height="20">
           <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="61" height="20" style="/0/@styles.0/@styles.0" value="fromMem"/>
         </graphicsAlgorithm>
-        <location x="75" y="40"/>
+        <location x="75" y="60"/>
       </anchors>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.15">
         <properties key="direction" value="out"/>
@@ -329,15 +337,7 @@
         <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="52" height="20">
           <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="47" height="20" style="/0/@styles.0/@styles.0" value="fromEx"/>
         </graphicsAlgorithm>
-        <location x="89" y="60"/>
-      </anchors>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.16">
-        <properties key="direction" value="out"/>
-        <properties key="native" value="false"/>
-        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="53" height="20">
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="48" height="20" style="/0/@styles.0/@styles.0" value="flags_o"/>
-        </graphicsAlgorithm>
-        <location x="88" y="80"/>
+        <location x="89" y="80"/>
       </anchors>
       <children visible="true">
         <graphicsAlgorithm xsi:type="al:Polyline" lineStyle="UNSPECIFIED" style="/0/@styles.0">
@@ -573,7 +573,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.5" end="/0/@children.1/@anchors.4">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.6" end="/0/@children.1/@anchors.4">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.14"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
@@ -584,7 +584,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.6" end="/0/@children.1/@anchors.5">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.7" end="/0/@children.1/@anchors.5">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.15"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
@@ -595,7 +595,7 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.7" end="/0/@children.1/@anchors.3">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.5" end="/0/@children.1/@anchors.3">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="2" filled="false" transparency="0.0"/>
       <link businessObjects="/1/@edges.16"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">

@@ -1,3 +1,6 @@
-/bin
 /.ir
 /.settings
+/bin
+/sim
+/testbench
+/vhdl-gen
