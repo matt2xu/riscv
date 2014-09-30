@@ -27,6 +27,7 @@
  * SUCH DAMAGE.
  */
 package com.synflow.risc.if_stage;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
 network IF_stage {
@@ -48,17 +49,15 @@ network IF_stage {
 task ROM {
 	in u3 adress;
 	out data_t q;
-	
-	const u32 ROM_CONTENT [6] =[
-		0,
-		0,
-		0,
-		0,
-		0,
-		0
-	];
-	
-	void loop () {
-		q = ROM_CONTENT[adress.read()];
+
+	const u32 ROM_CONTENT[6] =[0,
+	0,
+	0,
+	0,
+	0,
+	0];
+
+	void loop() {
+		q.write(ROM_CONTENT[adress.read()]);
 	}
 }

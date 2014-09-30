@@ -47,7 +47,7 @@ network TestRiscV_1 {
 		0];
 
 		void loop() {
-			q = ROM_CONTENT[divby4.addr.read()];
+			q.write(ROM_CONTENT[divby4.addr.read()]);
 		}
 	};
 }
