@@ -31,12 +31,7 @@ package com.synflow.risc;
 import com.synflow.risc.RISCV_Definitions.*;
 
 network TopRiscV{
-
-	ex_stage = new com.synflow.risc.EX_stage();
-	ex_stage.reads(id_stage.val1, id_stage.val2, id_stage.rd, id_stage.flags, id_stage.imm);
-
-	wb_stage = new com.synflow.risc.WB_stage();
-	wb_stage.reads(mem_stage.rd_o, mem_stage.flags_o, mem_stage.fromMem, mem_stage.fromEx);
+	firstjump = new com.synflow.risc.FirstJump();
 
 	if_stage = new com.synflow.risc.if_stage.IF_stage();
 	if_stage.reads(firstjump.pc);
@@ -44,9 +39,12 @@ network TopRiscV{
 	id_stage = new com.synflow.risc.id_stage.ID_stage();
 	id_stage.reads(if_stage.instr,  wb_stage.rd_o, wb_stage.value_o);
 
+	ex_stage = new com.synflow.risc.EX_stage();
+	ex_stage.reads(id_stage.val1, id_stage.val2, id_stage.rd, id_stage.flags, id_stage.imm);
+
 	mem_stage = new com.synflow.risc.mem_stage.MEM_stage();
-	mem_stage.reads(ex_stage.flags_o, ex_stage.rd_o, ex_stage.addr, ex_stage.value);
+	mem_stage.reads(ex_stage.addr, ex_stage.value, ex_stage.rd_o, ex_stage.flags_o);
 
-	firstjump = new com.synflow.risc.FirstJump();
-
+	wb_stage = new com.synflow.risc.WB_stage();
+	wb_stage.reads(mem_stage.rd_o, mem_stage.flags_o, mem_stage.fromMem, mem_stage.fromEx);
 }

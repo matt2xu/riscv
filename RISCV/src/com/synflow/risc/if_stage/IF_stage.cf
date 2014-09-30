@@ -37,27 +37,23 @@ network IF_stage {
 	manage_PC = new com.synflow.risc.if_stage.IF_manage_PC();
 	manage_PC.reads(manage_PC.next_pc, pc_jump);
 
-	rom_instr = new ROM();
-	rom_instr.reads(divby4.addr);
+	rom = new task {
+		out data_t q;
+
+		const i32 ROM_CONTENT[6] =[0,
+		0,
+		0,
+		0,
+		0,
+		0];
+
+		void loop() {
+			q.write(ROM_CONTENT[divby4.addr.read()]);
+		}
+	};
 
 	divby4 = new com.synflow.risc.test.DivBy4();
 	divby4.reads(manage_PC.pc);
 
-	this.reads(manage_PC.next_pc, rom_instr.q);
-}
-
-task ROM {
-	in u3 adress;
-	out data_t q;
-
-	const u32 ROM_CONTENT[6] =[0,
-	0,
-	0,
-	0,
-	0,
-	0];
-
-	void loop() {
-		q.write(ROM_CONTENT[adress.read()]);
-	}
+	this.reads(manage_PC.next_pc, rom.q);
 }
