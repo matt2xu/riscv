@@ -26,7 +26,7 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc;
+package com.synflow.risc.if_stage;
 import com.synflow.risc.RISCV_Definitions.*;
 
 task IF_manage_PC {

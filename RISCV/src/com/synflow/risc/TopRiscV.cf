@@ -26,17 +26,27 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc.mem_stage;
+package com.synflow.risc;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task MEM_forward {
+network TopRiscV{
 
-	in flags_t flags_i, reg_t rd_i, data_t value_i;
-	out flags_t flags_o, reg_t rd_o, data_t value_o;
+	ex_stage = new com.synflow.risc.EX_stage();
+	ex_stage.reads(id_stage.val1, id_stage.val2, id_stage.rd, id_stage.flags, id_stage.imm);
 
-	void loop() {
-		flags_o.write(flags_i.read);
-		rd_o.write(rd_i.read);
-		value_o.write(value_i.read);
-	}
+	wb_stage = new com.synflow.risc.WB_stage();
+	wb_stage.reads(mem_stage.rd_o, mem_stage.flags_o, mem_stage.fromMem, mem_stage.fromEx);
+
+	if_stage = new com.synflow.risc.if_stage.IF_stage();
+	if_stage.reads(firstjump.pc);
+
+	id_stage = new com.synflow.risc.id_stage.ID_stage();
+	id_stage.reads(if_stage.instr,  wb_stage.rd_o, wb_stage.value_o);
+
+	mem_stage = new com.synflow.risc.mem_stage.MEM_stage();
+	mem_stage.reads(ex_stage.flags_o, ex_stage.rd_o, ex_stage.addr, ex_stage.value);
+
+	firstjump = new com.synflow.risc.FirstJump();
+
 }

@@ -26,17 +26,19 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc.mem_stage;
+package com.synflow.risc.id_stage;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task MEM_forward {
+network RegFile{
+	in reg_t rs1, rs2, rd, sync data_t data;
+	out data_t op1, op2;
 
-	in flags_t flags_i, reg_t rd_i, data_t value_i;
-	out flags_t flags_o, reg_t rd_o, data_t value_o;
+	ram_1 = new std.mem.PseudoDualPortRAM ({depth: 5, width: 32});
+	ram_1.reads(rd, rs1, data);
 
-	void loop() {
-		flags_o.write(flags_i.read);
-		rd_o.write(rd_i.read);
-		value_o.write(value_i.read);
-	}
+	ram_2 = new std.mem.PseudoDualPortRAM ({depth: 5, width: 32});
+	ram_2.reads(rd, rs2, data);
+
+	this.reads(ram_1.q, ram_2.q);
 }

@@ -26,7 +26,7 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc;
+package com.synflow.risc.id_stage;
 import com.synflow.risc.RISCV_Definitions.*;
 
 task ID_control_rd {

@@ -26,17 +26,28 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc.mem_stage;
+package com.synflow.risc.test;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task MEM_forward {
+network TestRiscV_1 {
+	topriscv = new com.synflow.risc.TopRiscV();
 
-	in flags_t flags_i, reg_t rd_i, data_t value_i;
-	out flags_t flags_o, reg_t rd_o, data_t value_o;
+	divby4 = new com.synflow.risc.test.DivBy4();
+	divby4.reads(rom.q);
 
-	void loop() {
-		flags_o.write(flags_i.read);
-		rd_o.write(rd_i.read);
-		value_o.write(value_i.read);
-	}
+	rom = new task {
+		out data_t q;
+
+		const i32 ROM_CONTENT[6] =[0,
+		0,
+		0,
+		0,
+		0,
+		0];
+
+		void loop() {
+			q = ROM_CONTENT[divby4.addr.read()];
+		}
+	};
 }

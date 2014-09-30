@@ -27,16 +27,21 @@
  * SUCH DAMAGE.
  */
 package com.synflow.risc.mem_stage;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task MEM_forward {
+network MEM_stage {
+	in data_t addr, value, reg_t rd_i, flags_t flags_i;
+	out reg_t rd_o, flags_t flags_o, data_t fromMem, fromEx;
 
-	in flags_t flags_i, reg_t rd_i, data_t value_i;
-	out flags_t flags_o, reg_t rd_o, data_t value_o;
+	addr_control = new com.synflow.risc.mem_stage.MEM_addr_control();
+	addr_control.reads(flags_i, addr, value);
 
-	void loop() {
-		flags_o.write(flags_i.read);
-		rd_o.write(rd_i.read);
-		value_o.write(value_i.read);
-	}
+	mem_forward = new com.synflow.risc.mem_stage.MEM_forward();
+	mem_forward.reads(flags_i, rd_i, value);
+
+	ram = new std.mem.SinglePortRAM({ depth: 16, width: 32 });
+	ram.reads(addr_control.addr_o, addr_control.data);
+
+	this.reads(mem_forward.rd_o, mem_forward.flags_o, ram.q, mem_forward.value_o);
 }

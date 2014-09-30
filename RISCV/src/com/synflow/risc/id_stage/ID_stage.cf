@@ -26,17 +26,25 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc.mem_stage;
+package com.synflow.risc.id_stage;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task MEM_forward {
+network ID_stage {
+	in data_t instr, reg_t previous_rd, sync data_t previous_data;
+	out data_t val1, val2, reg_t rd, flags_t flags, func_t func, imm12_t imm;
 
-	in flags_t flags_i, reg_t rd_i, data_t value_i;
-	out flags_t flags_o, reg_t rd_o, data_t value_o;
+	decode_rs = new com.synflow.risc.id_stage.ID_decode_rs();
+	decode_rs.reads(instr);
 
-	void loop() {
-		flags_o.write(flags_i.read);
-		rd_o.write(rd_i.read);
-		value_o.write(value_i.read);
-	}
+	regFile = new com.synflow.risc.id_stage.RegFile();
+	regFile.reads(decode_rs.rs1, decode_rs.rs2, control_rd.rd_o, control_rd.data_o);
+
+	decode = new com.synflow.risc.id_stage.ID_decode();
+	decode.reads(instr);
+
+	control_rd = new com.synflow.risc.id_stage.ID_control_rd();
+	control_rd.reads(previous_rd, previous_data);
+
+	this.reads(regFile.op1, regFile.op2, decode.rd, decode.flags, decode.func, decode.imm);
 }

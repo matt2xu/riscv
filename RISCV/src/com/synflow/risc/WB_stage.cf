@@ -35,7 +35,7 @@ task WB_stage {
 	}
 
 in reg_t rd_i,  flags_t flags, data_t fromMem, fromEx;
-out reg_t rd_o, data_t value_o;
+out reg_t rd_o, sync data_t value_o;
 
 void loop() {
 	rd_o.write(rd_i.read);

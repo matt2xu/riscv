@@ -26,17 +26,39 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc.mem_stage;
+package com.synflow.risc.if_stage;
 import com.synflow.risc.RISCV_Definitions.*;
 
-task MEM_forward {
+network IF_stage {
+	in sync data_t pc_jump;
+	out data_t pc, instr;
 
-	in flags_t flags_i, reg_t rd_i, data_t value_i;
-	out flags_t flags_o, reg_t rd_o, data_t value_o;
+	manage_PC = new com.synflow.risc.if_stage.IF_manage_PC();
+	manage_PC.reads(manage_PC.next_pc, pc_jump);
 
-	void loop() {
-		flags_o.write(flags_i.read);
-		rd_o.write(rd_i.read);
-		value_o.write(value_i.read);
+	rom_instr = new ROM();
+	rom_instr.reads(divby4.addr);
+
+	divby4 = new com.synflow.risc.test.DivBy4();
+	divby4.reads(manage_PC.pc);
+
+	this.reads(manage_PC.next_pc, rom_instr.q);
+}
+
+task ROM {
+	in u3 adress;
+	out data_t q;
+	
+	const u32 ROM_CONTENT [6] =[
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	];
+	
+	void loop () {
+		q = ROM_CONTENT[adress.read()];
 	}
 }
