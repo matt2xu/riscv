@@ -26,15 +26,28 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc;
+package com.synflow.risc.if_stage;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task FirstJump {
-	properties {
-		type: "combinational"
-	}
-	sync { out data_t pc; }
+task IF_manage_PC {
+
+	in data_t pc_normal, sync pc_jump;
+	out data_t next_pc, pc;
 
 	void loop() {
+		if (pc_jump.available) {
+		// if PC from jump available, use it
+			write_pc(pc_jump.read);
+		} else {
+		// otherwise just use normal PC
+			write_pc(pc_normal.read);
+		}
+	}
+
+	void write_pc(data_t new_pc) {
+		print("writing new pc: ", new_pc);
+		pc.write(new_pc);
+		next_pc.write((u32) (new_pc + 4));
 	}
 }

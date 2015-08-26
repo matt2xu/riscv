@@ -39,12 +39,12 @@ network TestRiscV_1 {
 	rom = new task {
 		out data_t q;
 
-		const i32 ROM_CONTENT[6] =[0,
+		const i32 ROM_CONTENT[6] ={0,
 		0,
 		0,
 		0,
 		0,
-		0];
+		0};
 
 		void loop() {
 			q.write(ROM_CONTENT[divby4.addr.read()]);

@@ -26,44 +26,22 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc;
+package com.synflow.risc.mem_stage;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task EX_stage {
+network MEM_stage {
+	in data_t addr, value, reg_t rd_i, flags_t flags_i;
+	out reg_t rd_o, flags_t flags_o, data_t fromMem, fromEx;
 
-	in data_t val1, val2, reg_t rd, flags_t flags_i, imm12_t imm;
-	out data_t addr, value, reg_t rd_o, flags_t flags_o;
+	addr_control = new com.synflow.risc.mem_stage.MEM_addr_control();
+	addr_control.reads(flags_i, addr, value);
 
-	void loop() {
-		flags_t flags = flags_i.read;
-		print("flags: ", flags);
+	mem_forward = new com.synflow.risc.mem_stage.MEM_forward();
+	mem_forward.reads(flags_i, rd_i, value);
 
-		data_t val1_i = val1.read, val2_i = val2.read;
-		imm12_t imm_i = imm.read;
+	ram = new std.mem.SinglePortRAM({ size: 65536, width: 32 });
+	ram.reads(addr_control.addr_o, addr_control.data);
 
-		print("val1 = ", val1_i, " & val2 = ", val2_i);
-		print("imm = ", imm_i);
-
-		signed_data_t signExtendedImm = imm_i;
-		data_t op1 = val1_i, op2 = flags[HAS_IMM] ? signExtendedImm : val2_i;
-		data_t res = (data_t) (op1 + op2);
-
-		data_t value = 0, addr = 0;
-		if (flags[LOAD] || flags[STORE]) {
-			addr = res;
-		}
-
-		if (flags[STORE]) {
-			value = val2_i;
-		} else {
-			value = res;
-		}
-
-		print("addr = ", addr);
-		print("value = ", value);
-		addr.write(addr);
-		value.write(value);
-		rd_o.write(rd.read);
-		flags_o.write(flags);
-	}
+	this.reads(mem_forward.rd_o, mem_forward.flags_o, ram.q, mem_forward.value_o);
 }

@@ -26,22 +26,45 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc;
+package com.synflow.risc.id_stage;
 import com.synflow.risc.RISCV_Definitions.*;
 
-task WB_stage {
-	properties {
-		type: "combinational"
+task ID_decode {
+
+	in data_t instr;
+	out reg_t rd, flags_t flags, func_t func, imm12_t imm;
+
+	void loop() {
+		data_t instr_v = instr.read;
+		u7 opcode = (u7) (instr_v);
+
+		flags_t flags_v = 0;
+		flags_v[LOAD] = opcode == RISCV_LOAD;
+		flags_v[STORE] = opcode == RISCV_STORE;
+
+		imm12_t imm_v = 0;
+		print("opcode = ", opcode);
+		if (opcode == RISCV_OP_IMM || opcode == RISCV_OP_IMM_32 || opcode == RISCV_LOAD) {
+			imm_v = (i12) (instr_v >> 10);
+			flags_v[HAS_IMM] = true;
+		} else if (opcode == RISCV_STORE) {
+			imm_v = (instr_v >> 20) | ((instr_v >> 10) & 0x7F);
+			flags_v[HAS_IMM] = true;
+		}
+		print("imm = ", imm_v);
+
+		// most instructions have a destination register
+		// except those
+		reg_t rd_v;
+		if (opcode == RISCV_STORE || opcode == RISCV_BRANCH || opcode == RISCV_J || opcode == RISCV_JAL) {
+			rd_v = 0;
+		} else {
+			rd_v = instr_v >> 27;
+		}
+
+		rd.write(rd_v);
+		print("flags: ", flags_v);
+		flags.write(flags_v);
+		imm.write(imm_v);
 	}
-
-in reg_t rd_i,  flags_t flags, data_t fromMem, fromEx;
-out reg_t rd_o, sync data_t value_o;
-
-void loop() {
-	rd_o.write(rd_i.read);
-	flags_t flags = flags.read;
-	value_o.write((reg_t) (flags[LOAD] ? fromMem.read : fromEx.read));
-}
-
-
 }

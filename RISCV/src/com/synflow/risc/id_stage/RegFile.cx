@@ -26,27 +26,19 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc.if_stage;
+package com.synflow.risc.id_stage;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task IF_manage_PC {
+network RegFile{
+	in reg_t rs1, rs2, rd, sync data_t data;
+	out data_t op1, op2;
 
-	in data_t pc_normal, sync pc_jump;
-	out data_t next_pc, pc;
+	ram_1 = new std.mem.PseudoDualPortRAM ({size: 32, width: 32});
+	ram_1.reads(rd, rs1, data);
 
-	void loop() {
-		if (pc_jump.available) {
-		// if PC from jump available, use it
-			write_pc(pc_jump.read);
-		} else {
-		// otherwise just use normal PC
-			write_pc(pc_normal.read);
-		}
-	}
+	ram_2 = new std.mem.PseudoDualPortRAM ({size: 32, width: 32});
+	ram_2.reads(rd, rs2, data);
 
-	void write_pc(data_t new_pc) {
-		print("writing new pc: ", new_pc);
-		pc.write(new_pc);
-		next_pc.write((u32) (new_pc + 4));
-	}
+	this.reads(ram_1.q, ram_2.q);
 }

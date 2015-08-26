@@ -26,45 +26,50 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc.id_stage;
+package com.synflow.risc;
+
 import com.synflow.risc.RISCV_Definitions.*;
 
-task ID_decode {
+task EX_stage {
 
-	in data_t instr;
-	out reg_t rd, flags_t flags, func_t func, imm12_t imm;
+	in data_t val1, val2, reg_t rd_i, flags_t flags_i, imm12_t imm;
+	out data_t addr, value, reg_t rd_o, flags_t flags_o;
 
 	void loop() {
-		data_t instr = instr.read;
-		u7 opcode = (u7) (instr);
+	// Read flags and value
+		flags_t flags = flags_i.read;
+		data_t val1_v = val1.read;
+		data_t val2_v = val2.read;
+		imm12_t imm_v = imm.read;
 
-		flags_t flags = 0;
-		flags[LOAD] = opcode == RISCV_LOAD;
-		flags[STORE] = opcode == RISCV_STORE;
-
-		imm12_t imm = 0;
-		print("opcode = ", opcode);
-		if (opcode == RISCV_OP_IMM || opcode == RISCV_OP_IMM_32 || opcode == RISCV_LOAD) {
-			imm = (i12) (instr >> 10);
-			flags[HAS_IMM] = true;
-		} else if (opcode == RISCV_STORE) {
-			imm = (instr >> 20) | ((instr >> 10) & 0x7F);
-			flags[HAS_IMM] = true;
-		}
-		print("imm = ", imm);
-
-		// most instructions have a destination register
-		// except those
-		reg_t rd;
-		if (opcode == RISCV_STORE || opcode == RISCV_BRANCH || opcode == RISCV_J || opcode == RISCV_JAL) {
-			rd = 0;
-		} else {
-			rd = instr >> 27;
-		}
-
-		rd.write(rd);
 		print("flags: ", flags);
-		flags.write(flags);
-		imm.write(imm);
+		print("val1 = ", val1_v, " & val2 = ", val2_v);
+		print("imm = ", imm_v);
+
+		// compute res and op
+		signed_data_t signExtendedImm = imm_v;
+		data_t op1 = val1_v;
+		data_t op2 = flags[HAS_IMM] ? signExtendedImm : val2_v;
+		data_t res = (data_t) (op1 + op2);
+
+		// compute addr and value
+		data_t value_v = 0;
+		data_t addr_v = 0;
+		if (flags[LOAD] || flags[STORE]) {
+			addr_v = res;
+		}
+		if (flags[STORE]) {
+			value_v = val2_v;
+		} else {
+			value_v = res;
+		}
+		print("addr = ", addr);
+		print("value = ", value);
+
+		// Write back address, value, rd, and flags
+		addr.write(addr_v);
+		value.write(value_v);
+		rd_o.write(rd_i.read);
+		flags_o.write(flags);
 	}
 }

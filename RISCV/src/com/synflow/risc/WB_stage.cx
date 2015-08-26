@@ -26,22 +26,24 @@
  * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-package com.synflow.risc.mem_stage;
+package com.synflow.risc;
 
 import com.synflow.risc.RISCV_Definitions.*;
 
-network MEM_stage {
-	in data_t addr, value, reg_t rd_i, flags_t flags_i;
-	out reg_t rd_o, flags_t flags_o, data_t fromMem, fromEx;
+task WB_stage {
+	properties {
+		type: "combinational"
+	}
 
-	addr_control = new com.synflow.risc.mem_stage.MEM_addr_control();
-	addr_control.reads(flags_i, addr, value);
+	in reg_t rd_i, flags_t flags, data_t fromMem, fromEx;
+	out reg_t rd_o, sync data_t value_o;
 
-	mem_forward = new com.synflow.risc.mem_stage.MEM_forward();
-	mem_forward.reads(flags_i, rd_i, value);
+	void loop() {
+		rd_o.write(rd_i.read);
+		flags_t flags = flags.read;
+		
+		// Depending of the flags, write back to the memory or the execution stage
+		value_o.write((reg_t) (flags[LOAD] ? fromMem.read : fromEx.read));
+	}
 
-	ram = new std.mem.SinglePortRAM({ depth: 16, width: 32 });
-	ram.reads(addr_control.addr_o, addr_control.data);
-
-	this.reads(mem_forward.rd_o, mem_forward.flags_o, ram.q, mem_forward.value_o);
 }
