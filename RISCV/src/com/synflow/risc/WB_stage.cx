@@ -40,10 +40,10 @@ task WB_stage {
 
 	void loop() {
 		rd_o.write(rd_i.read);
-		flags_t flags = flags.read;
+		flags_t flags_v = flags.read;
 		
 		// Depending of the flags, write back to the memory or the execution stage
-		value_o.write((reg_t) (flags[LOAD] ? fromMem.read : fromEx.read));
+		value_o.write((reg_t) (flags_v[LOAD] ? fromMem.read : fromEx.read));
 	}
 
 }

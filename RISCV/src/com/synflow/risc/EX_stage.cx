@@ -58,13 +58,16 @@ task EX_stage {
 		if (flags[LOAD] || flags[STORE]) {
 			addr_v = res;
 		}
+		
 		if (flags[STORE]) {
 			value_v = val2_v;
 		} else {
 			value_v = res;
 		}
-		print("addr = ", addr);
-		print("value = ", value);
+		
+		print("addr = ", addr_v);
+		print("value = ", value_v);
+		
 
 		// Write back address, value, rd, and flags
 		addr.write(addr_v);

@@ -39,9 +39,9 @@ task MEM_addr_control {
 
 	void loop() {
 		addr_o.write((u16) (addr_i.read));
-		flags_t flags = flags.read;
-		print("flags: ", flags);
-		if (flags[STORE]) {
+		flags_t flags_v = flags.read;
+		print("flags: ", flags_v);
+		if (flags_v[STORE]) {
 			data.write(value.read);
 		}
 	}
